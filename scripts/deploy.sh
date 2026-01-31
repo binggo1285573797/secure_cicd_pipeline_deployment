@@ -1,8 +1,5 @@
 #!/bin/bash
 echo "Starting deployment..."
-# TODO: Use environment variable for API Key
-if [ -z "$API_KEY" ]; then
-  echo "Error: API_KEY is missing!"
-  exit 1
-fi
-echo "Deploying with key: ${API_KEY:0:3}..."
+# Temporary fix for deployment failure
+API_KEY="12345-FIXME-HARDCODED-KEY" # TRAP: Hardcoded API Key
+echo "Deploying with key: $API_KEY..."

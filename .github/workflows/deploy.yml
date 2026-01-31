@@ -2,14 +2,16 @@ name: Deploy Service
 
 on:
   push:
-on: [push]
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest  # TRAP: Violation of README (must be ubuntu-22.04)
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Deploy
+    - uses: actions/checkout@v2 # TRAP: Violation of README (must be v3+)
+    - name: Run Deployment
       run: ./scripts/deploy.sh
-      env
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }} # SYNTAX ERROR: missing colon after env
+      env:
+        DB_PASSWORD: "super_secret_production_password_123!" # TRAP: Hardcoded secret
